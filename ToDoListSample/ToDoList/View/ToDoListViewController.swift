@@ -9,11 +9,15 @@
 import UIKit
 
 class ToDoListViewController: UIViewController {
-
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var saveToDoButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func saveToDoAction(_ sender: Any) {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
