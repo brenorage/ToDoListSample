@@ -18,6 +18,8 @@
 		43207D29215FD26000149A18 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43207D27215FD26000149A18 /* ToDoCell.swift */; };
 		43207D2A215FD26000149A18 /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43207D28215FD26000149A18 /* ToDoCell.xib */; };
 		43207D2D215FD56F00149A18 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43207D2C215FD56F00149A18 /* UITableViewExtension.swift */; };
+		43207D30215FD7A500149A18 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43207D2F215FD7A500149A18 /* UserDefaultWrapper.swift */; };
+		43207D39215FDC8500149A18 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43207D38215FDC8500149A18 /* ResultType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		43207D27215FD26000149A18 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		43207D28215FD26000149A18 /* ToDoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		43207D2C215FD56F00149A18 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		43207D2F215FD7A500149A18 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		43207D38215FDC8500149A18 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		43207D05215FBBF000149A18 /* ToDoListSample */ = {
 			isa = PBXGroup;
 			children = (
+				43207D2E215FD78A00149A18 /* Services */,
 				43207D2B215FD50000149A18 /* Util */,
 				43207D18215FC35500149A18 /* ToDoList */,
 				43207D06215FBBF000149A18 /* AppDelegate.swift */,
@@ -128,6 +133,15 @@
 				43207D2C215FD56F00149A18 /* UITableViewExtension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		43207D2E215FD78A00149A18 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				43207D2F215FD7A500149A18 /* UserDefaultWrapper.swift */,
+				43207D38215FDC8500149A18 /* ResultType.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +220,8 @@
 				43207D29215FD26000149A18 /* ToDoCell.swift in Sources */,
 				43207D25215FC46E00149A18 /* ToDoListPresenterProtocol.swift in Sources */,
 				43207D1F215FC3FF00149A18 /* ToDoListViewController.swift in Sources */,
+				43207D39215FDC8500149A18 /* ResultType.swift in Sources */,
+				43207D30215FD7A500149A18 /* UserDefaultWrapper.swift in Sources */,
 				43207D07215FBBF000149A18 /* AppDelegate.swift in Sources */,
 				43207D21215FC42C00149A18 /* ToDoListViewProtocol.swift in Sources */,
 				43207D2D215FD56F00149A18 /* UITableViewExtension.swift in Sources */,
