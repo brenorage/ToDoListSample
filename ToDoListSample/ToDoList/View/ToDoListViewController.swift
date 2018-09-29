@@ -17,18 +17,34 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+    }
+}
 
+//MARK: - Setup methods -
+extension ToDoListViewController {
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cellType: ToDoCell.self)
+    }
+}
+
+//MARK: - TableView delegate -
+extension ToDoListViewController: UITableViewDelegate {}
+
+//MARK: - TableView data source -
+extension ToDoListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(with: ToDoCell.self, for: indexPath)
+        return cell
+    }
 }
