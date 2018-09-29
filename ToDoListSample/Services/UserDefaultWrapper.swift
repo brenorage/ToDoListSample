@@ -9,7 +9,7 @@
 import Foundation
 
 class UserDefaultWrapper {
-    
+    let toDoListKey = "ToDoListKey"
     private let defaults = UserDefaults.standard
     
     func get<T>(with key: String) -> ResultType<T> {
@@ -29,7 +29,7 @@ class UserDefaultWrapper {
             recoveryArray.append(data)
             defaults.set(recoveryArray, forKey: key)
         default:
-            break
+            defaults.set([data], forKey: key)
         }
         
     }

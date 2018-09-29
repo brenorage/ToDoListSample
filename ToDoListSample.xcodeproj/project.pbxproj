@@ -121,8 +121,8 @@
 		43207D26215FD00300149A18 /* ToDoCell */ = {
 			isa = PBXGroup;
 			children = (
-				43207D27215FD26000149A18 /* ToDoCell.swift */,
 				43207D28215FD26000149A18 /* ToDoCell.xib */,
+				43207D27215FD26000149A18 /* ToDoCell.swift */,
 			);
 			path = ToDoCell;
 			sourceTree = "<group>";

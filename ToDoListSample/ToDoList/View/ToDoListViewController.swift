@@ -9,15 +9,21 @@
 import UIKit
 
 class ToDoListViewController: UIViewController {
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var saveToDoButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var saveToDoButton: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var emptyView: UILabel!
     
-    @IBAction func saveToDoAction(_ sender: Any) {}
+    @IBAction private func saveToDoAction(_ sender: Any) { presenter.saveToDo(with: textView.text) }
+    
+    private lazy var presenter: ToDoListPresenterProtocol = ToDoListPresenter(with: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupTextView()
+        disableButton()
+        showEmptyList()
     }
 }
 
@@ -28,10 +34,57 @@ extension ToDoListViewController {
         tableView.dataSource = self
         tableView.register(cellType: ToDoCell.self)
     }
+    
+    private func setupTextView() {
+        textView.delegate = self
+    }
+}
+
+//MARK: - View protocol methods -
+extension ToDoListViewController: ToDoListViewProtocol {
+    func reloadTableView() {
+        tableView.reloadSections(IndexSet(0...0), with: .automatic)
+    }
+    
+    func showToDoList() {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.isHidden = false
+            self.emptyView.isHidden = true
+        }
+    }
+    
+    func showEmptyList() {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.isHidden = true
+            self.emptyView.isHidden = false
+        }
+    }
+    
+    func enableButton() {
+        saveToDoButton.isEnabled = true
+        saveToDoButton.alpha = 1
+    }
+    
+    func disableButton() {
+        saveToDoButton.isEnabled = false
+        saveToDoButton.alpha = 0.5
+    }
+    
+    func dismissKeyboard() {
+        textView.endEditing(true)
+    }
+    
+    func clearTextView() {
+        textView.text = ""
+    }
 }
 
 //MARK: - TableView delegate -
-extension ToDoListViewController: UITableViewDelegate {}
+extension ToDoListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
 
 //MARK: - TableView data source -
 extension ToDoListViewController: UITableViewDataSource {
@@ -40,11 +93,20 @@ extension ToDoListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return presenter.toDoList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let list = presenter.toDoList else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(with: ToDoCell.self, for: indexPath)
+        cell.toDo = list[indexPath.row]
         return cell
+    }
+}
+
+//MARK: - TextView delegate methods -
+extension ToDoListViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        presenter.changeButtonState(with: textView.text)
     }
 }

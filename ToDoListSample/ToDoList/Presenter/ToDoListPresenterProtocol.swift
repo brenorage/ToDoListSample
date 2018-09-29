@@ -9,5 +9,8 @@
 import Foundation
 
 protocol ToDoListPresenterProtocol: class {
-    
+    var toDoList: [String]? { get }
+    func changeButtonState(with text: String?)
+    func saveToDo(with text: String?)
+    func deleteToDo(in index: Int)
 }

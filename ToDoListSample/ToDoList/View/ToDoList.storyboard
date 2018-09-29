@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SPd-X6-4Nu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,10 +45,21 @@
                                     <constraint firstAttribute="height" constant="1" id="Lws-0g-AGb"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vjs-Ed-4bj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vjs-Ed-4bj">
                                 <rect key="frame" x="0.0" y="284" width="320" height="284"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="I6P-m4-53B">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista de ToDo esta vazia!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-q4-X0v">
+                                <rect key="frame" x="20" y="415.5" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-nS-AJw">
                                 <rect key="frame" x="210" y="160.5" width="90" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.59577027515753433" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,14 +80,17 @@
                         <constraints>
                             <constraint firstItem="1v2-73-KcB" firstAttribute="leading" secondItem="zW5-WP-raC" secondAttribute="leading" id="7cf-XX-5sZ"/>
                             <constraint firstItem="vjs-Ed-4bj" firstAttribute="top" secondItem="up5-hw-C3x" secondAttribute="bottom" constant="20" id="7yr-Lk-EOg"/>
+                            <constraint firstItem="eNu-q4-X0v" firstAttribute="centerY" secondItem="vjs-Ed-4bj" secondAttribute="centerY" id="Bhx-XF-yTh"/>
                             <constraint firstItem="f9i-Qr-RRO" firstAttribute="top" secondItem="B3w-nS-AJw" secondAttribute="bottom" constant="20" id="CVR-Nf-dsu"/>
                             <constraint firstItem="MgZ-Oc-E5T" firstAttribute="trailing" secondItem="up5-hw-C3x" secondAttribute="trailing" constant="20" id="Cz8-tc-hzq"/>
                             <constraint firstItem="up5-hw-C3x" firstAttribute="leading" secondItem="MgZ-Oc-E5T" secondAttribute="leading" constant="20" id="Ghj-hp-dVj"/>
                             <constraint firstItem="MgZ-Oc-E5T" firstAttribute="trailing" secondItem="f9i-Qr-RRO" secondAttribute="trailing" id="HTh-kK-Ne6"/>
                             <constraint firstItem="1v2-73-KcB" firstAttribute="trailing" secondItem="zW5-WP-raC" secondAttribute="trailing" id="Haj-BH-qpC"/>
+                            <constraint firstItem="MgZ-Oc-E5T" firstAttribute="trailing" secondItem="eNu-q4-X0v" secondAttribute="trailing" constant="20" id="JHx-if-zOz"/>
                             <constraint firstItem="up5-hw-C3x" firstAttribute="top" secondItem="f9i-Qr-RRO" secondAttribute="bottom" constant="20" id="M3t-uR-gHT"/>
                             <constraint firstItem="MgZ-Oc-E5T" firstAttribute="trailing" secondItem="B3w-nS-AJw" secondAttribute="trailing" constant="20" id="WkQ-Yq-8M2"/>
                             <constraint firstItem="f9i-Qr-RRO" firstAttribute="leading" secondItem="MgZ-Oc-E5T" secondAttribute="leading" id="XOU-WW-8xh"/>
+                            <constraint firstItem="eNu-q4-X0v" firstAttribute="leading" secondItem="MgZ-Oc-E5T" secondAttribute="leading" constant="20" id="cJw-Ru-Rec"/>
                             <constraint firstItem="MgZ-Oc-E5T" firstAttribute="trailing" secondItem="zW5-WP-raC" secondAttribute="trailing" constant="20" id="g8s-L2-F9o"/>
                             <constraint firstItem="MgZ-Oc-E5T" firstAttribute="bottom" secondItem="vjs-Ed-4bj" secondAttribute="bottom" id="ll7-KX-hUn"/>
                             <constraint firstItem="vjs-Ed-4bj" firstAttribute="leading" secondItem="MgZ-Oc-E5T" secondAttribute="leading" id="mix-FR-h5Y"/>
@@ -89,6 +103,7 @@
                         <viewLayoutGuide key="safeArea" id="MgZ-Oc-E5T"/>
                     </view>
                     <connections>
+                        <outlet property="emptyView" destination="eNu-q4-X0v" id="m50-eL-FoS"/>
                         <outlet property="saveToDoButton" destination="B3w-nS-AJw" id="YT4-H8-S3M"/>
                         <outlet property="tableView" destination="vjs-Ed-4bj" id="DNO-KT-gMQ"/>
                         <outlet property="textView" destination="1v2-73-KcB" id="HEf-s9-jg0"/>

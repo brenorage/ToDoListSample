@@ -9,5 +9,11 @@
 import Foundation
 
 protocol ToDoListViewProtocol: class {
-    
+    func reloadTableView()
+    func showToDoList()
+    func showEmptyList()
+    func enableButton()
+    func disableButton()
+    func dismissKeyboard()
+    func clearTextView()
 }
