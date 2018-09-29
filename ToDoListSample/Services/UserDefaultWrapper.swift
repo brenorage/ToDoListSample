@@ -31,6 +31,18 @@ class UserDefaultWrapper {
         default:
             defaults.set([data], forKey: key)
         }
-        
+    }
+    
+    func deleteItem<T>(in index: Int, with key: String) -> ResultType<[T]> {
+        let result: ResultType<[T]> = get(with: key)
+        switch result {
+        case let .success(array):
+            var recoveryArray = array
+            recoveryArray.remove(at: index)
+            defaults.set(recoveryArray, forKey: key)
+            return .success(recoveryArray)
+        default:
+            return .failure
+        }
     }
 }

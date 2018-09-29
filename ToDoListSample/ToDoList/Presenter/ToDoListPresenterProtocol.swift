@@ -13,4 +13,5 @@ protocol ToDoListPresenterProtocol: class {
     func changeButtonState(with text: String?)
     func saveToDo(with text: String?)
     func deleteToDo(in index: Int)
+    func getToDoList()
 }

@@ -41,16 +41,24 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
         }
     }
     
-    func deleteToDo(in index: Int) {}
+    func deleteToDo(in index: Int) {
+        let result: ResultType<[String]> = userDefaultService.deleteItem(in: index, with: userDefaultService.toDoListKey)
+        treat(result)
+    }
 }
 
 //MARK: - Service methods -
 extension ToDoListPresenter {
-    private func getToDoList() {
+    func getToDoList() {
         let result: ResultType<[String]> = userDefaultService.get(with: userDefaultService.toDoListKey)
+        treat(result)
+    }
+    
+    private func treat<T>(_ result: ResultType<T>) {
         switch result {
         case let .success(list):
-            toDoList = list
+            guard let stringList = list as? [String] else { fallthrough }
+            toDoList = stringList
             toDoViewProtocol?.showToDoList()
             toDoViewProtocol?.reloadTableView()
         case .failure:

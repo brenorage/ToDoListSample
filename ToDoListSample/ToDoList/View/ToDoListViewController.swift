@@ -23,7 +23,7 @@ class ToDoListViewController: UIViewController {
         setupTableView()
         setupTextView()
         disableButton()
-        showEmptyList()
+        presenter.getToDoList()
     }
 }
 
@@ -76,6 +76,7 @@ extension ToDoListViewController: ToDoListViewProtocol {
     
     func clearTextView() {
         textView.text = ""
+        presenter.changeButtonState(with: textView.text)
     }
 }
 
@@ -83,6 +84,13 @@ extension ToDoListViewController: ToDoListViewProtocol {
 extension ToDoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Apagar") { _,_,_ in
+            self.presenter.deleteToDo(in: indexPath.row)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
