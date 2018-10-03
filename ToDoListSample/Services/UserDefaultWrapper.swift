@@ -10,10 +10,10 @@ import Foundation
 
 class UserDefaultWrapper {
     let toDoListKey = "ToDoListKey"
-    private let defaults = UserDefaults.standard
+    private let defaults = UserDefaults(suiteName: "group.brenorage.toDoListSample")
     
     func get<T>(with key: String) -> ResultType<T> {
-        let data = defaults.object(forKey: key)
+        let data = defaults?.object(forKey: key)
         if let unwrappedData = data as? T {
             return .success(unwrappedData)
         } else {
@@ -27,9 +27,9 @@ class UserDefaultWrapper {
         case let .success(array):
             var recoveryArray = array
             recoveryArray.append(data)
-            defaults.set(recoveryArray, forKey: key)
+            defaults?.set(recoveryArray, forKey: key)
         default:
-            defaults.set([data], forKey: key)
+            defaults?.set([data], forKey: key)
         }
     }
     
@@ -39,7 +39,7 @@ class UserDefaultWrapper {
         case let .success(array):
             var recoveryArray = array
             recoveryArray.remove(at: index)
-            defaults.set(recoveryArray, forKey: key)
+            defaults?.set(recoveryArray, forKey: key)
             return .success(recoveryArray)
         default:
             return .failure
